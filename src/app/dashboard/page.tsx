@@ -64,7 +64,7 @@ export default async function DashboardPage() {
                                 <span className="font-bold text-accent">0%</span>
                              </div>
                              <div className="w-full h-2 bg-background border border-border-glow rounded-full overflow-hidden">
-                                <div className="h-full bg-accent w-[0%]"></div>
+                                <div className="h-full bg-accent shadow-[0_0_10px_rgba(76,175,80,0.4)] w-[0%]"></div>
                              </div>
                           </div>
                        </div>
@@ -86,7 +86,7 @@ export default async function DashboardPage() {
                               <p className="font-semibold text-sm">{resource.title}</p>
                               <p className="text-xs text-text-secondary">{resource.type}</p>
                            </div>
-                           <a href={resource.url} target="_blank" rel="noreferrer" className="text-primary hover:text-accent p-2 bg-primary/5 rounded-lg transition-colors"><Download className="w-4 h-4"/></a>
+                           <a href={resource.url} target="_blank" rel="noreferrer" className="text-primary hover:text-accent p-2 bg-primary/10 rounded-lg transition-colors border border-primary/10 hover:border-accent/30"><Download className="w-4 h-4"/></a>
                         </div>
                       ))
                    ) : (
@@ -113,16 +113,19 @@ export default async function DashboardPage() {
              </div>
 
              {/* Upcoming Sessions */}
-             <div className="bg-primary text-primary-foreground rounded-2xl p-6 shadow-md border border-primary/20">
-                <h2 className="text-xl font-bold mb-4">Upcoming Sessions</h2>
-                <div className="space-y-4">
-                   <div className="bg-black/10 rounded-xl p-3">
-                      <p className="font-bold">A-Level Physics</p>
-                      <p className="text-sm opacity-80 flex items-center gap-1 mt-1"><MapPin className="w-3 h-3"/> Zoom Meeting</p>
-                      <p className="text-xs bg-white text-primary inline-block px-2 py-1 rounded font-bold mt-2">Today, 15:00 PM</p>
-                   </div>
-                </div>
-             </div>
+              <div className="bg-primary text-primary-foreground rounded-2xl p-6 shadow-xl border border-primary/20 relative overflow-hidden">
+                 {/* Internal glow */}
+                 <div className="absolute -top-12 -right-12 w-32 h-32 bg-accent/20 rounded-full blur-2xl"></div>
+                 
+                 <h2 className="text-xl font-bold mb-4 relative z-10">Upcoming Sessions</h2>
+                 <div className="space-y-4 relative z-10">
+                    <div className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-4">
+                       <p className="font-bold">A-Level Physics</p>
+                       <p className="text-sm opacity-80 flex items-center gap-1 mt-1"><MapPin className="w-3 h-3"/> Zoom Meeting</p>
+                       <p className="text-xs bg-accent text-accent-foreground inline-block px-3 py-1.5 rounded-lg font-bold mt-3 shadow-lg">Today, 15:00 PM</p>
+                    </div>
+                 </div>
+              </div>
           </div>
 
         </div>

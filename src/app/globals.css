@@ -11,6 +11,7 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
   
   --color-surface: var(--surface);
   --color-border-glow: var(--border-glow);
@@ -29,6 +30,7 @@
   --secondary-foreground: #ffffff;
   --accent: #4CAF50;
   --accent-foreground: #ffffff;
+  --success: #1A6B3C;
   
   --surface: #ffffff;
   --border-glow: rgba(26,107,60,0.12);
@@ -74,9 +76,9 @@ body {
 }
 
 @keyframes glow-pulse {
-  0% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-  100% { opacity: 0.4; }
+  0% { opacity: 0.3; transform: scale(1); filter: blur(120px); }
+  50% { opacity: 0.6; transform: scale(1.05); filter: blur(140px); }
+  100% { opacity: 0.3; transform: scale(1); filter: blur(120px); }
 }
 
 @keyframes slideUp {

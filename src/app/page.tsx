@@ -57,10 +57,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Center abstract shape matching colors */}
-                <div className="w-64 h-64 bg-primary/10 rounded-full flex items-center justify-center border-4 border-secondary/20">
-                  <div className="w-48 h-48 bg-secondary/20 rounded-full flex items-center justify-center border-4 border-accent/30">
-                    <div className="w-32 h-32 bg-accent/30 rounded-full"></div>
+                {/* Center abstract shapes matching palette */}
+                <div className="w-64 h-64 bg-primary/10 rounded-full flex items-center justify-center border-4 border-secondary/20 animate-glow-pulse">
+                  <div className="w-48 h-48 bg-secondary/15 rounded-full flex items-center justify-center border-4 border-accent/20">
+                    <div className="w-32 h-32 bg-accent/20 rounded-full shadow-[0_0_50px_rgba(76,175,80,0.2)]"></div>
                   </div>
                 </div>
               </div>
@@ -70,7 +70,7 @@ export default function Home() {
       </section>
 
       {/* 2. Trust Indicators & Value Proposition */}
-      <section className="py-12 bg-white border-y border-border-glow">
+      <section className="py-12 bg-surface border-y border-border-glow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
            <div className="flex flex-col md:flex-row justify-center items-center gap-12 text-center">
               <div className="flex items-center gap-3">
@@ -101,16 +101,16 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[ 
-              { name: "Mathematics", icon: Calculator, color: "text-primary", bg: "bg-primary/8" },
-              { name: "Physical Sciences", icon: Atom, color: "text-secondary", bg: "bg-secondary/8" },
-              { name: "Life Sciences", icon: Leaf, color: "text-accent", bg: "bg-accent/8" },
-              { name: "English", icon: PenTool, color: "text-primary", bg: "bg-primary/8" },
-              { name: "Accounting", icon: LineChart, color: "text-secondary", bg: "bg-secondary/8" },
-              { name: "Business Studies", icon: Briefcase, color: "text-accent", bg: "bg-accent/8" },
-              { name: "Economics", icon: TrendingUp, color: "text-primary", bg: "bg-primary/8" },
-              { name: "Geography", icon: Globe, color: "text-secondary", bg: "bg-secondary/8" }
+              { name: "Mathematics", icon: Calculator, color: "text-primary", bg: "bg-primary/5" },
+              { name: "Physical Sciences", icon: Atom, color: "text-secondary", bg: "bg-secondary/5" },
+              { name: "Life Sciences", icon: Leaf, color: "text-accent", bg: "bg-accent/5" },
+              { name: "English", icon: PenTool, color: "text-primary", bg: "bg-primary/5" },
+              { name: "Accounting", icon: LineChart, color: "text-secondary", bg: "bg-secondary/5" },
+              { name: "Business Studies", icon: Briefcase, color: "text-accent", bg: "bg-accent/5" },
+              { name: "Economics", icon: TrendingUp, color: "text-primary", bg: "bg-primary/5" },
+              { name: "Geography", icon: Globe, color: "text-secondary", bg: "bg-secondary/5" }
              ].map((subject, i) => (
-              <Link href={`/courses`} key={i} className="group bg-surface hover:bg-white border border-border-glow p-6 rounded-2xl flex flex-col gap-4 transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-1">
+              <Link href={`/courses`} key={i} className="group bg-surface hover:bg-background border border-border-glow p-6 rounded-2xl flex flex-col gap-4 transition-all duration-300 shadow-sm hover:shadow-lg hover:border-accent/30 hover:-translate-y-1">
                 <div className={`w-14 h-14 rounded-xl ${subject.bg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                   <subject.icon className={`w-7 h-7 ${subject.color}`} />
                 </div>

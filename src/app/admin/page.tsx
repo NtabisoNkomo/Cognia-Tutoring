@@ -41,25 +41,25 @@ export default async function AdminPage() {
         </div>
 
         <div className="grid md:grid-cols-4 gap-6 mb-12">
-           <div className="bg-surface border border-border-glow p-6 rounded-2xl shadow-sm">
-              <div className="text-primary bg-primary/10 w-12 h-12 flex items-center justify-center rounded-xl mb-4"><Users /></div>
+           <div className="bg-surface border border-border-glow p-6 rounded-2xl shadow-sm hover:border-primary/30 transition-colors">
+              <div className="text-primary bg-primary/10 w-12 h-12 flex items-center justify-center rounded-xl mb-4 border border-primary/10"><Users /></div>
               <p className="text-xs text-text-secondary font-bold uppercase tracking-wider mb-1">Total Users</p>
               <h3 className="text-3xl font-bold text-foreground">{usersCount}</h3>
            </div>
            
-           <div className="bg-surface border border-border-glow p-6 rounded-2xl shadow-sm">
-              <div className="text-accent bg-accent/10 w-12 h-12 flex items-center justify-center rounded-xl mb-4"><BookOpen /></div>
+           <div className="bg-surface border border-border-glow p-6 rounded-2xl shadow-sm hover:border-accent/30 transition-colors">
+              <div className="text-accent bg-accent/10 w-12 h-12 flex items-center justify-center rounded-xl mb-4 border border-accent/10"><BookOpen /></div>
               <p className="text-xs text-text-secondary font-bold uppercase tracking-wider mb-1">Total Courses</p>
               <h3 className="text-3xl font-bold text-foreground">{coursesCount}</h3>
            </div>
 
-           <div className="bg-surface border border-border-glow p-6 rounded-2xl shadow-sm">
-              <div className="text-secondary bg-secondary/10 w-12 h-12 flex items-center justify-center rounded-xl mb-4"><UserPlus /></div>
+           <div className="bg-surface border border-border-glow p-6 rounded-2xl shadow-sm hover:border-secondary/30 transition-colors">
+              <div className="text-secondary bg-secondary/10 w-12 h-12 flex items-center justify-center rounded-xl mb-4 border border-secondary/10"><UserPlus /></div>
               <p className="text-xs text-text-secondary font-bold uppercase tracking-wider mb-1">Active Enrolments</p>
               <h3 className="text-3xl font-bold text-foreground">{enrolmentsCount}</h3>
            </div>
 
-           <div className="bg-surface border border-border-glow p-6 rounded-2xl shadow-sm">
+           <div className="bg-surface border border-border-glow p-6 rounded-2xl shadow-sm hover:border-primary/30 transition-colors">
               <div className="text-text-secondary bg-background border border-border-glow w-12 h-12 flex items-center justify-center rounded-xl mb-4"><FileText /></div>
               <p className="text-xs text-text-secondary font-bold uppercase tracking-wider mb-1">Resources</p>
               <h3 className="text-3xl font-bold text-foreground">{resourcesCount}</h3>

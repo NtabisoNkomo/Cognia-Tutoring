@@ -16,7 +16,10 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4 py-24">
+    <div className="min-h-screen flex items-center justify-center bg-background px-4 py-24 relative overflow-hidden">
+      {/* Background glow touches */}
+      <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="w-full max-w-lg bg-surface p-8 rounded-2xl border border-border-glow shadow-xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-foreground mb-2">Create an Account</h1>
@@ -69,7 +72,7 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          <button type="submit" className="w-full py-4 rounded-xl bg-accent text-accent-foreground font-semibold hover:bg-accent/90 transition-all shadow-md mt-6">
+          <button type="submit" className="w-full py-4 rounded-xl bg-accent text-accent-foreground font-bold hover:bg-accent/90 transition-all shadow-[0_10px_20px_rgba(76,175,80,0.2)] hover:shadow-[0_10px_30px_rgba(76,175,80,0.3)] mt-6">
             Register Account
           </button>
         </form>
