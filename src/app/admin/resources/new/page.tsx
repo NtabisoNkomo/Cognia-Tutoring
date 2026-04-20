@@ -28,7 +28,7 @@ export default async function NewResourcePage() {
         </div>
 
         <div className="bg-surface border border-border-glow p-8 rounded-2xl shadow-sm">
-           <form action={createResource} className="space-y-6">
+           <form action={createResource} className="space-y-6" encType="multipart/form-data">
               <div>
                  <label htmlFor="title" className="block text-sm font-medium text-foreground mb-2">Resource Title</label>
                  <input 
@@ -74,18 +74,34 @@ export default async function NewResourcePage() {
                  </div>
               </div>
 
-              <div>
-                 <label htmlFor="url" className="block text-sm font-medium text-foreground mb-2">Resource URL</label>
-                 <input 
-                   type="url" 
-                   id="url" 
-                   name="url" 
-                   required
-                   className="w-full px-4 py-3 bg-background border border-border-glow rounded-xl text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
-                   placeholder="https://example.com/resource.pdf"
-                 />
-                 <p className="mt-2 text-xs text-text-secondary">Provide a direct link to the resource file or video.</p>
-              </div>
+               <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                     <label htmlFor="file" className="block text-sm font-medium text-foreground mb-2">Upload File (Optional)</label>
+                     <div className="relative group">
+                        <input 
+                          type="file" 
+                          id="file" 
+                          name="file" 
+                          className="w-full px-4 py-3 bg-background border border-border-glow rounded-xl text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-primary-foreground hover:file:bg-primary/90"
+                          accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.zip"
+                        />
+                     </div>
+                     <p className="mt-2 text-[10px] text-text-secondary uppercase font-bold tracking-wider">PDF, DOCX, PNG, JPG (Max 50MB)</p>
+                  </div>
+                  <div>
+                     <label htmlFor="url" className="block text-sm font-medium text-foreground mb-2">Or Resource URL</label>
+                     <input 
+                       type="url" 
+                       id="url" 
+                       name="url" 
+                       className="w-full px-4 py-3 bg-background border border-border-glow rounded-xl text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all"
+                       placeholder="https://example.com/resource.pdf"
+                     />
+                     <p className="mt-2 text-[10px] text-text-secondary uppercase font-bold tracking-wider text-right">External links or videos</p>
+                  </div>
+               </div>
+
+               <p className="text-xs text-text-secondary italic text-center border-t border-border-glow/30 pt-4">Note: If a file is uploaded, it will take priority over the URL.</p>
 
               <div className="pt-4 flex justify-end gap-4">
                  <Link href="/admin" className="px-6 py-3 border border-border-glow rounded-xl text-text-secondary hover:text-foreground hover:bg-background transition-all font-medium">

@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import fs from "fs/promises";
+import path from "path";
 
 export async function createCourse(formData: FormData) {
   const session = await getSession();
@@ -44,11 +46,32 @@ export async function createResource(formData: FormData) {
 
   const title = formData.get("title") as string;
   const type = formData.get("type") as string;
-  const url = formData.get("url") as string;
   const courseId = formData.get("courseId") as string;
+  const file = formData.get("file") as File | null;
+  let url = formData.get("url") as string;
 
-  if (!title || !type || !url || !courseId) {
-    throw new Error("All fields are required");
+  if (!title || !type || !courseId) {
+    throw new Error("Title, Type, and Course are required");
+  }
+
+  // Handle local file upload if present
+  if (file && file.size > 0) {
+    try {
+      const buffer = Buffer.from(await file.arrayBuffer());
+      const fileName = `${Date.now()}-${file.name.replace(/\s+/g, "_")}`;
+      const uploadsDir = path.join(process.cwd(), "public", "uploads");
+      
+      // Ensure directory exists (extra check)
+      await fs.mkdir(uploadsDir, { recursive: true });
+      
+      await fs.writeFile(path.join(uploadsDir, fileName), buffer);
+      url = `/uploads/${fileName}`;
+    } catch (error) {
+      console.error("File upload error:", error);
+      throw new Error("Failed to upload file");
+    }
+  } else if (!url) {
+    throw new Error("Either a file or a URL must be provided");
   }
 
   await prisma.resource.create({

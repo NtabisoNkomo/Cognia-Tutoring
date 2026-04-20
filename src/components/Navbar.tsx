@@ -60,7 +60,7 @@ export default function Navbar() {
               <Link href="/login" className="px-4 py-2 text-sm font-semibold text-text-secondary hover:text-foreground transition-colors">
                 Login
               </Link>
-              <Link href="/courses" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-[0_0_15px_rgba(26,107,60,0.5)] hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] hover:-translate-y-0.5 active:translate-y-0">
+              <Link href="/courses" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-[0_0_15px_rgba(26,107,60,0.3)] hover:shadow-[0_0_25px_rgba(76,175,80,0.4)] hover:-translate-y-0.5 active:translate-y-0">
                 Enroll Now
               </Link>
             </div>
@@ -92,7 +92,7 @@ export default function Navbar() {
           <Link href="/login" onClick={() => setIsOpen(false)} className="text-text-secondary font-semibold tracking-wide hover:text-foreground transition-colors">
             Login
           </Link>
-          <Link href="/courses" onClick={() => setIsOpen(false)} className="mt-4 bg-primary text-white px-8 py-3 rounded-full font-bold w-[200px] text-center shadow-[0_0_20px_rgba(26,107,60,0.6)]">
+          <Link href="/courses" onClick={() => setIsOpen(false)} className="mt-4 bg-primary text-white px-8 py-3 rounded-full font-bold w-[200px] text-center shadow-[0_0_20px_rgba(26,107,60,0.4)] hover:shadow-[0_0_30px_rgba(76,175,80,0.5)] transition-all">
             Enroll Now
           </Link>
         </div>

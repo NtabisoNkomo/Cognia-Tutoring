@@ -25,7 +25,7 @@ export default function CTASection() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <Link href="/courses" className="w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-lg shadow-[0_0_30px_rgba(26,107,60,0.5)] hover:shadow-[0_0_40px_rgba(74,222,128,0.6)] hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group">
+          <Link href="/courses" className="w-full sm:w-auto px-8 py-4 rounded-full bg-primary text-primary-foreground font-semibold text-lg shadow-[0_10px_30px_rgba(26,107,60,0.2)] hover:shadow-[0_10px_40px_rgba(76,175,80,0.4)] hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group">
             Start Your Journey <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Link>
           <Link href="/contact" className="w-full sm:w-auto px-8 py-4 rounded-full border border-primary/20 bg-primary/5 hover:bg-primary/10 text-primary font-semibold text-lg transition-all backdrop-blur-sm flex items-center justify-center">
