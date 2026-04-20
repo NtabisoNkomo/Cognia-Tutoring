@@ -1,0 +1,61 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  name       String
+  password   String
+  role       String   @default("STUDENT") // STUDENT, ADMIN, PARENT
+  grade      String?
+  curriculum String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  enrolments Enrollment[]
+}
+
+model Course {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  subject     String
+  level       String
+  curriculum  String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  enrolments  Enrollment[]
+  resources   Resource[]
+}
+
+model Enrollment {
+  id         String   @id @default(uuid())
+  userId     String
+  courseId   String
+  status     String   @default("ACTIVE")
+  enrolledAt DateTime @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+}
+
+model Resource {
+  id          String   @id @default(uuid())
+  title       String
+  type        String // PDF, WORKSHEET, VIDEO
+  url         String
+  courseId    String
+  createdAt   DateTime @default(now())
+
+  course      Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+}
