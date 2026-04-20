@@ -1,5 +1,4 @@
 import prisma from "@/lib/prisma";
-import Link from "next/link";
 import { getSession, logoutUser } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { BookOpen, MapPin, Download, BookMarked, User as UserIcon } from "lucide-react";

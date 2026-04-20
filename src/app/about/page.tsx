@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { BookOpen, ShieldCheck, Trophy } from "lucide-react";
 
 export default function AboutPage() {
@@ -28,7 +27,8 @@ export default function AboutPage() {
                <div className="bg-accent/10 p-3 rounded-lg border border-accent/20 mt-1"><ShieldCheck className="text-accent h-6 w-6" /></div>
                <div>
                  <h3 className="text-xl font-bold text-foreground mb-2">Trusted by Parents</h3>
-                 <p className="text-text-secondary">Parents look to us for trusted, curriculum-aligned tutoring services that genuinely support their children's growth.</p>
+                 <p className="text-text-secondary italic">&quot;The pen is the tongue of the mind.&quot; — Cervantes</p>
+                 <p className="text-text-secondary">Parents look to us for trusted, curriculum-aligned tutoring services that genuinely support their children&apos;s growth.</p>
                </div>
             </div>
 
@@ -36,7 +36,7 @@ export default function AboutPage() {
                <div className="bg-primary/10 p-3 rounded-lg border border-primary/20 mt-1"><BookOpen className="text-primary h-6 w-6" /></div>
                <div>
                  <h3 className="text-xl font-bold text-foreground mb-2">School Integrated</h3>
-                 <p className="text-text-secondary">Educational institutions partner with us seeking robust digital learning support tools for their learners.</p>
+                 <p className="text-xl text-text-secondary leading-relaxed italic">&quot;At Cognia, we don&apos;t just teach subjects; we architect futures. Our platform was born from the realization that every student deserves elite academic support, regardless of their location.&quot;</p>
                </div>
             </div>
 
@@ -56,7 +56,7 @@ export default function AboutPage() {
            <div className="flex flex-wrap justify-center gap-6 md:gap-12">
               <div className="bg-surface border border-border-glow px-8 py-6 rounded-2xl shadow-sm text-left w-full sm:w-auto">
                  <h4 className="font-bold text-foreground text-xl">CAPS</h4>
-                 <p className="text-sm text-text-secondary">South Africa's national curriculum</p>
+                 <p className="text-sm text-text-secondary">South Africa&apos;s national curriculum</p>
               </div>
               <div className="bg-surface border border-border-glow px-8 py-6 rounded-2xl shadow-sm text-left w-full sm:w-auto">
                  <h4 className="font-bold text-foreground text-xl">IEB</h4>

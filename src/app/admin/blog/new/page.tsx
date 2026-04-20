@@ -19,7 +19,7 @@ export default async function NewPostPage() {
               <ArrowLeft className="w-4 h-4" /> Back to Admin
            </Link>
            <h1 className="text-4xl font-black heading-elite mb-2">Compose Post</h1>
-           <p className="text-text-secondary italic">"The pen is the tongue of the mind." — Cervantes</p>
+           <p className="text-text-secondary italic">&quot;The pen is the tongue of the mind.&quot; — Cervantes</p>
         </div>
 
         <div className="glow-card p-10 rounded-[2.5rem]">

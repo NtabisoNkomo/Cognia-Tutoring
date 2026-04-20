@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BookOpen, BrainCircuit, LineChart, Target, Trophy, Users, CheckCircle, ShieldCheck, Calculator, Atom, Leaf, PenTool, Briefcase, TrendingUp, Globe } from "lucide-react";
+import { ArrowRight, BookOpen, LineChart, Target, Users, CheckCircle, ShieldCheck, Calculator, Atom, Leaf, PenTool, Briefcase, TrendingUp } from "lucide-react";
 
 export default function Home() {
   return (
@@ -137,7 +137,7 @@ export default function Home() {
               { text: "An excellent digital learning support tool for our learners at the institution.", author: "Educator", role: "Partner School" }
             ].map((quote, i) => (
               <div key={i} className="bg-background border border-border-glow p-8 rounded-2xl flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
-                <p className="text-foreground text-lg leading-relaxed italic mb-8">"{quote.text}"</p>
+                <p className="text-foreground text-lg leading-relaxed italic mb-8">&quot;{quote.text}&quot;</p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-secondary-foreground font-bold text-lg">
                     {quote.author.charAt(0)}

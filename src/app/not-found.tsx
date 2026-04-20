@@ -5,9 +5,7 @@ export default function NotFound() {
       <div className="max-w-md text-center">
         <div className="text-primary font-mono text-xl mb-4 tracking-widest font-bold">404 ERROR</div>
         <h1 className="text-5xl font-bold text-foreground mb-6">Page Not Found</h1>
-        <p className="text-lg text-text-secondary mb-10">
-          The educational material you're looking for seems to have moved or doesn't exist.
-        </p>
+        <p className="text-text-secondary text-lg mb-8 max-w-md">It seems like the page you&apos;re looking for has moved to a higher grade or doesn&apos;t exist in our curriculum.</p>
         <Link href="/" className="inline-block px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-full shadow-lg hover:bg-primary/90 transition-all">
           Return Home
         </Link>

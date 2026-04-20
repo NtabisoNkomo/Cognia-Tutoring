@@ -99,7 +99,7 @@ export async function getSession() {
       select: { id: true, name: true, email: true, role: true, grade: true, curriculum: true }
     });
     return user;
-  } catch (e) {
+  } catch {
     return null;
   }
 }
