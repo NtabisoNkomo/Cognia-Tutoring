@@ -134,3 +134,36 @@ export async function updateEnrolmentStatus(formData: FormData) {
   revalidatePath("/admin/enrolments");
   revalidatePath("/admin");
 }
+
+export async function createPost(formData: FormData) {
+  const session = await getSession();
+  if (!session || session.role !== "ADMIN") {
+    throw new Error("Unauthorized");
+  }
+
+  const title = formData.get("title") as string;
+  const category = formData.get("category") as string;
+  const desc = formData.get("desc") as string;
+  const content = formData.get("content") as string;
+  const author = formData.get("author") as string;
+  const readTime = formData.get("readTime") as string;
+
+  if (!title || !category || !desc || !content || !author || !readTime) {
+    throw new Error("All fields are required");
+  }
+
+  await prisma.post.create({
+    data: {
+      title,
+      category,
+      desc,
+      content,
+      author,
+      readTime,
+    },
+  });
+
+  revalidatePath("/admin");
+  revalidatePath("/blog");
+  redirect("/admin");
+}

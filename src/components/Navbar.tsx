@@ -28,10 +28,10 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full px-4 pt-6 pb-2 pointer-events-none">
+      <div className="fixed top-0 left-0 right-0 z-50 flex justify-center w-full px-4 pt-6 pb-2 pointer-events-none animate-reveal">
         <nav className={`
-          pointer-events-auto transition-all duration-300 w-full max-w-5xl rounded-full border
-          ${scrolled ? "bg-surface/80 backdrop-blur-md border-border-glow shadow-lg shadow-primary/5 py-3" : "bg-transparent border-transparent py-4"}
+          pointer-events-auto transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] rounded-full border
+          ${scrolled ? "glass max-w-2xl px-2 py-2 shadow-2xl scale-100" : "bg-transparent border-transparent max-w-5xl px-6 py-4 scale-105"}
         `}>
           <div className="px-6 mx-auto flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 group z-50" onClick={() => setIsOpen(false)}>
@@ -47,8 +47,8 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all
-                    ${pathname === link.href ? "text-accent bg-primary/10" : "text-text-secondary hover:text-foreground hover:bg-primary/5"}
+                  className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300
+                    ${pathname === link.href ? "text-accent bg-accent/5" : "text-text-secondary/70 hover:text-foreground hover:bg-primary/5"}
                   `}
                 >
                   {link.name}
@@ -56,12 +56,12 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="hidden md:flex items-center space-x-2">
-              <Link href="/login" className="px-4 py-2 text-sm font-semibold text-text-secondary hover:text-foreground transition-colors">
+            <div className="hidden md:flex items-center space-x-3">
+              <Link href="/login" className="px-4 py-2 text-xs font-bold uppercase tracking-widest text-text-secondary/70 hover:text-foreground transition-colors">
                 Login
               </Link>
-              <Link href="/courses" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-[0_0_15px_rgba(26,107,60,0.3)] hover:shadow-[0_0_25px_rgba(76,175,80,0.4)] hover:-translate-y-0.5 active:translate-y-0">
-                Enroll Now
+              <Link href="/courses" className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest transition-all shadow-[0_10px_20px_rgba(26,107,60,0.2)] hover:shadow-[0_15px_30px_rgba(26,107,60,0.3)] hover:-translate-y-1 active:translate-y-0">
+                Join Now
               </Link>
             </div>
 

@@ -59,3 +59,16 @@ model Resource {
 
   course      Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 }
+
+model Post {
+  id          String   @id @default(uuid())
+  title       String
+  category    String
+  content     String
+  desc        String   // Excerpt/Description
+  author      String
+  readTime    String   // e.g. "5 min"
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

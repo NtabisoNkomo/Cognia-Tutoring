@@ -1,13 +1,46 @@
 import { ArrowRight, Clock } from "lucide-react";
 import CTASection from "@/components/CTASection";
+import prisma from "@/lib/prisma";
+import { format } from "date-fns";
+import { Post } from "@prisma/client";
 
-const ARTICLES = [
-  { id: 2, title: "Cambridge vs IEB vs CAPS: Making the Right Choice", category: "Curriculum", date: "Sep 28, 2025", readTime: "8 min", author: "Mark Venter", desc: "A definitive guide to South Africa's curriculum landscape and what it means for university admission." },
-  { id: 3, title: "Mastering Grade 12 Physical Sciences", category: "Subject Deep-Dive", date: "Sep 15, 2025", readTime: "6 min", author: "Thabo Ndlovu", desc: "Strategies for tackling the most notorious topics in the standard physics syllabus." },
-  { id: 4, title: "The Myth of 'Bad at Math'", category: "Psychology", date: "Sep 01, 2025", readTime: "5 min", author: "Dr. Sarah Jenkins", desc: "How to rebuild mathematical foundation and confidence after years of struggling." }
+interface BlogPost {
+  id: string;
+  title: string;
+  category: string;
+  date: string;
+  readTime: string;
+  author: string;
+  desc: string;
+}
+
+const DUMMY_ARTICLES: BlogPost[] = [
+  { id: "d2", title: "Cambridge vs IEB vs CAPS: Making the Right Choice", category: "Curriculum", date: "Sep 28, 2025", readTime: "8 min", author: "Mark Venter", desc: "A definitive guide to South Africa's curriculum landscape and what it means for university admission." },
+  { id: "d3", title: "Mastering Grade 12 Physical Sciences", category: "Subject Deep-Dive", date: "Sep 15, 2025", readTime: "6 min", author: "Thabo Ndlovu", desc: "Strategies for tackling the most notorious topics in the standard physics syllabus." },
+  { id: "d4", title: "The Myth of 'Bad at Math'", category: "Psychology", date: "Sep 01, 2025", readTime: "5 min", author: "Dr. Sarah Jenkins", desc: "How to rebuild mathematical foundation and confidence after years of struggling." }
 ];
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const dbPosts = await prisma.post.findMany({
+    where: { published: true },
+    orderBy: { createdAt: 'desc' }
+  });
+
+  const allPosts: BlogPost[] = dbPosts.length > 0 
+    ? dbPosts.map((p: Post) => ({
+        id: p.id,
+        title: p.title,
+        category: p.category,
+        date: format(new Date(p.createdAt), "MMM dd, yyyy"),
+        readTime: p.readTime,
+        author: p.author,
+        desc: p.desc
+      }))
+    : DUMMY_ARTICLES;
+
+  const featuredPost = allPosts[0];
+  const regularPosts = allPosts.slice(1);
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       
@@ -32,34 +65,36 @@ export default function BlogPage() {
         </div>
 
         {/* Featured Post */}
-        <div className="glow-card rounded-2xl overflow-hidden mb-16 group hover:border-primary/40 cursor-pointer flex flex-col md:flex-row">
-          <div className="w-full md:w-1/2 p-10 flex flex-col justify-center order-2 md:order-1">
-            <div className="flex items-center gap-4 mb-4 text-xs font-mono uppercase tracking-widest text-text-secondary">
-              <span className="text-accent">Exam Strategy</span>
-              <span>•</span>
-              <span className="flex items-center gap-1"><Clock className="w-3 h-3"/> 10 min read</span>
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 group-hover:text-accent transition-colors">The Architectural Approach to Final Exams</h2>
-            <p className="text-text-secondary text-lg mb-8 leading-relaxed">Why cramming creates the illusion of competence, and how to build a 6-week revision structure that guarantees long-term retention.</p>
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center font-bold text-sm">
-                SJ
+        {featuredPost && (
+          <div className="glow-card rounded-2xl overflow-hidden mb-16 group hover:border-primary/40 cursor-pointer flex flex-col md:flex-row">
+            <div className="w-full md:w-1/2 p-10 flex flex-col justify-center order-2 md:order-1">
+              <div className="flex items-center gap-4 mb-4 text-xs font-mono uppercase tracking-widest text-text-secondary">
+                <span className="text-accent">{featuredPost.category}</span>
+                <span>•</span>
+                <span className="flex items-center gap-1"><Clock className="w-3 h-3"/> {featuredPost.readTime} read</span>
               </div>
-              <span className="text-sm font-medium text-foreground">Dr. Sarah Jenkins</span>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 group-hover:text-accent transition-colors">{featuredPost.title}</h2>
+              <p className="text-text-secondary text-lg mb-8 leading-relaxed">{featuredPost.desc}</p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center font-bold text-sm tracking-tighter">
+                  {featuredPost.author.split(' ').map((n: string) => n[0]).join('').toUpperCase()}
+                </div>
+                <span className="text-sm font-medium text-foreground">{featuredPost.author}</span>
+              </div>
+            </div>
+            <div className="w-full md:w-1/2 bg-surface border-b md:border-b-0 md:border-l border-white/5 relative min-h-[300px] order-1 md:order-2 flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-surface to-surface overflow-hidden">
+               {/* Abstract visual for featured article */}
+               <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(74,222,128,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
+               <div className="w-32 h-32 rounded bg-background border border-primary/20 rotate-45 flex items-center justify-center shadow-[0_0_50px_rgba(26,107,60,0.3)]">
+                  <div className="w-24 h-24 rounded bg-surface border border-primary/20 flex items-center justify-center -rotate-45"></div>
+               </div>
             </div>
           </div>
-          <div className="w-full md:w-1/2 bg-surface border-b md:border-b-0 md:border-l border-white/5 relative min-h-[300px] order-1 md:order-2 flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-surface to-surface overflow-hidden">
-             {/* Abstract visual for featured article */}
-             <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(74,222,128,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]"></div>
-             <div className="w-32 h-32 rounded bg-background border border-primary/20 rotate-45 flex items-center justify-center shadow-[0_0_50px_rgba(26,107,60,0.3)]">
-                <div className="w-24 h-24 rounded bg-surface border border-primary/20 flex items-center justify-center -rotate-45"></div>
-             </div>
-          </div>
-        </div>
+        )}
 
         {/* Regular Posts (Horizontal cards) */}
         <div className="grid gap-6">
-          {ARTICLES.map(article => (
+          {regularPosts.map((article: BlogPost) => (
             <div key={article.id} className="bg-background border border-white/5 hover:border-primary/30 hover:bg-surface/50 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-12 transition-all cursor-pointer group">
                <div className="flex-1">
                  <div className="flex items-center gap-4 mb-4 text-xs font-mono uppercase tracking-widest text-text-secondary">

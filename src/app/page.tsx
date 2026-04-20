@@ -19,9 +19,9 @@ export default function Home() {
                 Accessible, High-Quality Education
               </div>
               
-              <h1 className="text-5xl lg:text-7xl font-bold text-foreground tracking-tight mb-6 leading-[1.1]">
-                Enhance Student <br />
-                <span className="text-primary">Performance.</span>
+              <h1 className="text-6xl lg:text-8xl font-black text-foreground heading-elite mb-8 leading-[0.95]">
+                Unlock Your <br />
+                <span className="text-primary drop-shadow-sm">Academic Potential.</span>
               </h1>
               
               <p className="text-xl text-text-secondary mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
@@ -94,31 +94,28 @@ export default function Home() {
       {/* 3. Featured Subjects */}
       <section className="py-24 bg-background relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Featured Subjects</h2>
-            <p className="text-xl text-text-secondary max-w-2xl mx-auto">Providing structured academic support and supplementary education across all major disciplines.</p>
+          <div className="max-w-4xl mx-auto text-center mb-24 animate-reveal">
+            <h2 className="text-5xl md:text-7xl font-black text-foreground heading-elite mb-6">Featured Subjects</h2>
+            <p className="text-xl text-text-secondary/70">Structured academic support for the next generation of leaders.</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             {[ 
-              { name: "Mathematics", icon: Calculator, color: "text-primary", bg: "bg-primary/5" },
-              { name: "Physical Sciences", icon: Atom, color: "text-secondary", bg: "bg-secondary/5" },
-              { name: "Life Sciences", icon: Leaf, color: "text-accent", bg: "bg-accent/5" },
-              { name: "English", icon: PenTool, color: "text-primary", bg: "bg-primary/5" },
-              { name: "Accounting", icon: LineChart, color: "text-secondary", bg: "bg-secondary/5" },
-              { name: "Business Studies", icon: Briefcase, color: "text-accent", bg: "bg-accent/5" },
-              { name: "Economics", icon: TrendingUp, color: "text-primary", bg: "bg-primary/5" },
-              { name: "Geography", icon: Globe, color: "text-secondary", bg: "bg-secondary/5" }
+              { name: "Mathematics", icon: Calculator, color: "text-primary", bg: "bg-primary/5", span: "md:col-span-8" },
+              { name: "Physical Sciences", icon: Atom, color: "text-secondary", bg: "bg-secondary/5", span: "md:col-span-4" },
+              { name: "Life Sciences", icon: Leaf, color: "text-accent", bg: "bg-accent/5", span: "md:col-span-4" },
+              { name: "English", icon: PenTool, color: "text-primary", bg: "bg-primary/5", span: "md:col-span-4" },
+              { name: "Accounting", icon: LineChart, color: "text-secondary", bg: "bg-secondary/5", span: "md:col-span-4" },
+              { name: "Business", icon: Briefcase, color: "text-accent", bg: "bg-accent/5", span: "md:col-span-6" },
+              { name: "Economics", icon: TrendingUp, color: "text-primary", bg: "bg-primary/5", span: "md:col-span-6" },
              ].map((subject, i) => (
-              <Link href={`/courses`} key={i} className="group bg-surface hover:bg-background border border-border-glow p-6 rounded-2xl flex flex-col gap-4 transition-all duration-300 shadow-sm hover:shadow-lg hover:border-accent/30 hover:-translate-y-1">
-                <div className={`w-14 h-14 rounded-xl ${subject.bg} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                  <subject.icon className={`w-7 h-7 ${subject.color}`} />
+              <Link href={`/courses`} key={i} className={`group glow-card p-10 rounded-[2.5rem] flex flex-col gap-6 animate-reveal ${subject.span}`} style={{ animationDelay: `${i * 100}ms` }}>
+                <div className={`w-20 h-20 rounded-3xl ${subject.bg} flex items-center justify-center group-hover:rotate-6 transition-transform duration-500`}>
+                  <subject.icon className={`w-10 h-10 ${subject.color}`} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-base text-foreground mb-0.5">{subject.name}</h3>
-                  <p className="text-xs text-text-secondary flex items-center gap-1">
-                    Explore courses <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
-                  </p>
+                  <h3 className="text-2xl font-black heading-elite mb-2">{subject.name}</h3>
+                  <p className="text-sm text-text-secondary/60 uppercase tracking-tighter">Explore Curriculum</p>
                 </div>
               </Link>
             ))}

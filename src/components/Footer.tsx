@@ -37,7 +37,7 @@ export default function Footer() {
               <ul className="space-y-4">
                 <li><Link href="/blog" className="text-text-secondary hover:text-accent transition-colors">Study Guides</Link></li>
                 <li><Link href="#" className="text-text-secondary hover:text-accent transition-colors">Exam Timetables</Link></li>
-                <li><Link href="#" className="text-text-secondary hover:text-accent transition-colors">Parent Portal</Link></li>
+                <li><Link href="#" className="text-text-secondary hover:text-accent transition-colors">Student Portal</Link></li>
               </ul>
             </div>
 

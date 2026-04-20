@@ -30,10 +30,10 @@ export default async function DashboardPage() {
     <div className="pt-32 pb-24 min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-12 border-b border-border-glow pb-8">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16 border-b border-border-glow pb-10 animate-reveal">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Student Dashboard</h1>
-            <p className="text-text-secondary">Welcome back, {session.name}</p>
+            <h1 className="text-4xl lg:text-5xl font-black heading-elite mb-2">Student Dashboard</h1>
+            <p className="text-lg text-text-secondary/70 italic">Welcome back, {session.name}</p>
           </div>
           <form action={logoutUser}>
              <button className="px-6 py-2 bg-surface border border-border-glow text-text-secondary rounded-lg font-medium hover:text-foreground transition-all">
@@ -47,8 +47,8 @@ export default async function DashboardPage() {
           <div className="lg:col-span-2 space-y-8">
              
              {/* Enrolled Courses */}
-             <div className="bg-surface border border-border-glow rounded-2xl p-6 shadow-sm">
-                <h2 className="text-xl font-bold mb-6 flex items-center gap-2"><BookOpen className="text-primary w-5 h-5"/> Enrolled Courses</h2>
+             <div className="glow-card rounded-[2rem] p-8 animate-reveal" style={{ animationDelay: "100ms" }}>
+                <h2 className="text-2xl font-black heading-elite mb-8 flex items-center gap-3"><BookOpen className="text-primary w-6 h-6"/> Enrolled Courses</h2>
                 
                 <div className="space-y-4">
                   {enrolledCourses.length > 0 ? (
@@ -76,8 +76,8 @@ export default async function DashboardPage() {
              </div>
 
              {/* Downloadable Resources */}
-             <div className="bg-surface border border-border-glow rounded-2xl p-6 shadow-sm">
-                <h2 className="text-xl font-bold mb-6 flex items-center gap-2"><BookMarked className="text-secondary w-5 h-5"/> Study Materials</h2>
+             <div className="glow-card rounded-[2rem] p-8 animate-reveal" style={{ animationDelay: "200ms" }}>
+                <h2 className="text-2xl font-black heading-elite mb-8 flex items-center gap-3"><BookMarked className="text-secondary w-6 h-6"/> Study Materials</h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                    {resources.length > 0 ? (
                       resources.map(resource => (
