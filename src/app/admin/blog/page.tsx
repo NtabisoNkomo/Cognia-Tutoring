@@ -2,7 +2,7 @@ import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
-import { ArrowLeft, Plus, Trash2, Newspaper, Clock, User } from "lucide-react";
+import { ArrowLeft, Plus, Newspaper, Clock, User } from "lucide-react";
 import { deletePost } from "@/lib/admin-actions";
 import { format } from "date-fns";
 import DeleteButton from "@/components/admin/DeleteButton";

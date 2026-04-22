@@ -2,7 +2,7 @@ import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
-import { ArrowLeft, Plus, Trash2, BookOpen, GraduationCap, Layers } from "lucide-react";
+import { ArrowLeft, Plus, BookOpen, GraduationCap, Layers } from "lucide-react";
 import { deleteCourse } from "@/lib/admin-actions";
 import DeleteButton from "@/components/admin/DeleteButton";
 
