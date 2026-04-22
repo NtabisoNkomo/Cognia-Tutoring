@@ -48,11 +48,11 @@ export default async function AdminPage() {
               <h3 className="text-4xl font-black heading-elite text-foreground">{usersCount}</h3>
            </div>
            
-           <div className="glow-card p-10 rounded-[2.5rem] animate-reveal" style={{ animationDelay: "200ms" }}>
-              <div className="text-accent bg-accent/10 w-16 h-16 flex items-center justify-center rounded-2xl mb-6 border border-accent/10"><BookOpen className="w-8 h-8" /></div>
+           <Link href="/admin/courses" className="glow-card p-10 rounded-[2.5rem] animate-reveal hover:border-accent/40 transition-all group" style={{ animationDelay: "200ms" }}>
+              <div className="text-accent bg-accent/10 w-16 h-16 flex items-center justify-center rounded-2xl mb-6 border border-accent/10 group-hover:scale-110 transition-transform"><BookOpen className="w-8 h-8" /></div>
               <p className="text-xs text-text-secondary/60 font-black uppercase tracking-widest mb-2">Total Courses</p>
               <h3 className="text-4xl font-black heading-elite text-foreground">{coursesCount}</h3>
-           </div>
+           </Link>
  
            <div className="glow-card p-10 rounded-[2.5rem] animate-reveal" style={{ animationDelay: "300ms" }}>
               <div className="text-secondary bg-secondary/10 w-16 h-16 flex items-center justify-center rounded-2xl mb-6 border border-secondary/10"><UserPlus className="w-8 h-8" /></div>
@@ -66,11 +66,11 @@ export default async function AdminPage() {
               <h3 className="text-4xl font-black heading-elite text-foreground">{resourcesCount}</h3>
            </div>
 
-           <div className="glow-card p-10 rounded-[2.5rem] animate-reveal" style={{ animationDelay: "500ms" }}>
-              <div className="text-primary bg-primary/10 w-16 h-16 flex items-center justify-center rounded-2xl mb-6 border border-primary/10"><Newspaper className="w-8 h-8" /></div>
+           <Link href="/admin/blog" className="glow-card p-10 rounded-[2.5rem] animate-reveal hover:border-primary/40 transition-all group" style={{ animationDelay: "500ms" }}>
+              <div className="text-primary bg-primary/10 w-16 h-16 flex items-center justify-center rounded-2xl mb-6 border border-primary/10 group-hover:scale-110 transition-transform"><Newspaper className="w-8 h-8" /></div>
               <p className="text-xs text-text-secondary/60 font-black uppercase tracking-widest mb-2">Blog Posts</p>
               <h3 className="text-4xl font-black heading-elite text-foreground">{postsCount}</h3>
-           </div>
+           </Link>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
@@ -78,17 +78,17 @@ export default async function AdminPage() {
            <div className="bg-surface border border-border-glow rounded-2xl p-6 shadow-sm">
               <h2 className="text-xl font-bold mb-6 flex items-center gap-2 text-foreground"><Settings className="w-5 h-5"/> Quick Actions</h2>
               <div className="space-y-4">
-                 <Link href="/admin/courses/new" className="w-full flex items-center justify-between p-4 bg-background border border-border-glow border-dashed rounded-xl hover:bg-primary/5 hover:border-primary/50 transition-colors text-foreground">
-                    <span className="font-semibold text-sm">Add New Course</span>
-                    <span className="text-xl">+</span>
-                 </Link>
+                  <Link href="/admin/courses" className="w-full flex items-center justify-between p-4 bg-background border border-border-glow border-dashed rounded-xl hover:bg-primary/5 hover:border-primary/50 transition-colors text-foreground">
+                     <span className="font-semibold text-sm">Manage Courses</span>
+                     <span className="text-xl">→</span>
+                  </Link>
                   <Link href="/admin/resources/new" className="w-full flex items-center justify-between p-4 bg-background border border-border-glow border-dashed rounded-xl hover:bg-accent/5 hover:border-accent/50 transition-colors text-foreground">
                      <span className="font-semibold text-sm">Upload Resource</span>
                      <span className="text-xl">+</span>
                   </Link>
-                  <Link href="/admin/blog/new" className="w-full flex items-center justify-between p-4 bg-background border border-border-glow border-dashed rounded-xl hover:bg-primary/5 hover:border-primary/50 transition-colors text-foreground">
-                     <span className="font-semibold text-sm">Write Blog Post</span>
-                     <span className="text-xl">+</span>
+                  <Link href="/admin/blog" className="w-full flex items-center justify-between p-4 bg-background border border-border-glow border-dashed rounded-xl hover:bg-primary/5 hover:border-primary/50 transition-colors text-foreground">
+                     <span className="font-semibold text-sm">Manage Blog Posts</span>
+                     <span className="text-xl">→</span>
                   </Link>
                  <Link href="/admin/enrolments" className="w-full flex items-center justify-between p-4 bg-background border border-border-glow border-dashed rounded-xl hover:bg-secondary/5 hover:border-secondary/50 transition-colors text-foreground">
                     <span className="font-semibold text-sm">Manage Enrolments</span>

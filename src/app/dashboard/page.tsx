@@ -21,7 +21,6 @@ export default async function DashboardPage() {
   });
 
   const enrolledCourses = enrolments.map(e => e.course);
-  const resources = enrolledCourses.flatMap(course => course.resources);
 
   // Dashboard must show: Enrolled courses, Progress tracking, Upcoming sessions, Downloadable resources, Profile settings
 
@@ -74,24 +73,53 @@ export default async function DashboardPage() {
                 </div>
              </div>
 
-             {/* Downloadable Resources */}
+             {/* Downloadable Resources grouped by Subject */}
              <div className="glow-card rounded-[2rem] p-8 animate-reveal" style={{ animationDelay: "200ms" }}>
-                <h2 className="text-2xl font-black heading-elite mb-8 flex items-center gap-3"><BookMarked className="text-secondary w-6 h-6"/> Study Materials</h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                   {resources.length > 0 ? (
-                      resources.map(resource => (
-                        <div key={resource.id} className="flex items-center justify-between p-4 border border-border-glow rounded-xl bg-background">
-                           <div>
-                              <p className="font-semibold text-sm">{resource.title}</p>
-                              <p className="text-xs text-text-secondary">{resource.type}</p>
+                <h2 className="text-2xl font-black heading-elite mb-8 flex items-center gap-3"><BookMarked className="text-secondary w-6 h-6"/> Academic Materials</h2>
+                
+                {enrolledCourses.length > 0 ? (
+                  <div className="space-y-10">
+                    {Array.from(new Set(enrolledCourses.map(c => c.subject))).map(subject => {
+                      const subjectResources = enrolledCourses
+                        .filter(c => c.subject === subject)
+                        .flatMap(c => c.resources);
+                      
+                      if (subjectResources.length === 0) return null;
+
+                      return (
+                        <div key={subject} className="space-y-4">
+                           <h3 className="text-xs font-black uppercase tracking-[0.2em] text-text-secondary/50 border-b border-border-glow pb-2 mb-4">
+                             {subject}
+                           </h3>
+                           <div className="grid sm:grid-cols-2 gap-4">
+                              {subjectResources.map(resource => (
+                                <div key={resource.id} className="flex items-center justify-between p-4 border border-border-glow rounded-xl bg-background group hover:border-primary/30 transition-colors">
+                                   <div>
+                                      <p className="font-bold text-sm text-foreground">{resource.title}</p>
+                                      <p className="text-[10px] text-text-secondary/60 font-black uppercase tracking-wider mt-1">{resource.type}</p>
+                                   </div>
+                                   <a 
+                                     href={resource.url} 
+                                     target="_blank" 
+                                     rel="noreferrer" 
+                                     className="text-primary p-2 bg-primary/5 rounded-lg transition-all border border-primary/5 group-hover:bg-primary group-hover:text-white"
+                                     title="Download Resource"
+                                   >
+                                     <Download className="w-4 h-4"/>
+                                   </a>
+                                </div>
+                              ))}
                            </div>
-                           <a href={resource.url} target="_blank" rel="noreferrer" className="text-primary hover:text-accent p-2 bg-primary/10 rounded-lg transition-colors border border-primary/10 hover:border-accent/30"><Download className="w-4 h-4"/></a>
                         </div>
-                      ))
-                   ) : (
-                      <p className="text-text-secondary col-span-full">No study materials available.</p>
-                   )}
-                </div>
+                      );
+                    })}
+                    {enrolledCourses.every(c => c.resources.length === 0) && (
+                       <p className="text-text-secondary text-center py-12">No materials have been uploaded for your courses yet.</p>
+                    )}
+                  </div>
+                ) : (
+                  <p className="text-text-secondary text-center py-12">Enroll in courses to access premium academic materials.</p>
+                )}
              </div>
           </div>
 

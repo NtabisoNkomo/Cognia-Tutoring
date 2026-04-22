@@ -167,3 +167,43 @@ export async function createPost(formData: FormData) {
   revalidatePath("/blog");
   redirect("/admin");
 }
+
+export async function deletePost(formData: FormData) {
+  const session = await getSession();
+  if (!session || session.role !== "ADMIN") {
+    throw new Error("Unauthorized");
+  }
+
+  const postId = formData.get("postId") as string;
+  if (!postId) {
+    throw new Error("Post ID is required");
+  }
+
+  await prisma.post.delete({
+    where: { id: postId },
+  });
+
+  revalidatePath("/admin/blog");
+  revalidatePath("/admin");
+  revalidatePath("/blog");
+}
+
+export async function deleteCourse(formData: FormData) {
+  const session = await getSession();
+  if (!session || session.role !== "ADMIN") {
+    throw new Error("Unauthorized");
+  }
+
+  const courseId = formData.get("courseId") as string;
+  if (!courseId) {
+    throw new Error("Course ID is required");
+  }
+
+  await prisma.course.delete({
+    where: { id: courseId },
+  });
+
+  revalidatePath("/admin/courses");
+  revalidatePath("/admin");
+  revalidatePath("/courses");
+}

@@ -14,11 +14,7 @@ interface BlogPost {
   desc: string;
 }
 
-const DUMMY_ARTICLES: BlogPost[] = [
-  { id: "d2", title: "Cambridge vs IEB vs CAPS: Making the Right Choice", category: "Curriculum", date: "Sep 28, 2025", readTime: "8 min", author: "Mark Venter", desc: "A definitive guide to South Africa's curriculum landscape and what it means for university admission." },
-  { id: "d3", title: "Mastering Grade 12 Physical Sciences", category: "Subject Deep-Dive", date: "Sep 15, 2025", readTime: "6 min", author: "Thabo Ndlovu", desc: "Strategies for tackling the most notorious topics in the standard physics syllabus." },
-  { id: "d4", title: "The Myth of 'Bad at Math'", category: "Psychology", date: "Sep 01, 2025", readTime: "5 min", author: "Dr. Sarah Jenkins", desc: "How to rebuild mathematical foundation and confidence after years of struggling." }
-];
+
 
 export default async function BlogPage() {
   const dbPosts = await prisma.post.findMany({
@@ -26,17 +22,15 @@ export default async function BlogPage() {
     orderBy: { createdAt: 'desc' }
   });
 
-  const allPosts: BlogPost[] = dbPosts.length > 0 
-    ? dbPosts.map((p: Post) => ({
-        id: p.id,
-        title: p.title,
-        category: p.category,
-        date: format(new Date(p.createdAt), "MMM dd, yyyy"),
-        readTime: p.readTime,
-        author: p.author,
-        desc: p.desc
-      }))
-    : DUMMY_ARTICLES;
+  const allPosts = dbPosts.map((p: Post) => ({
+    id: p.id,
+    title: p.title,
+    category: p.category,
+    date: format(new Date(p.createdAt), "MMM dd, yyyy"),
+    readTime: p.readTime,
+    author: p.author,
+    desc: p.desc
+  }));
 
   const featuredPost = allPosts[0];
   const regularPosts = allPosts.slice(1);
